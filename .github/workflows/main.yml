@@ -18,13 +18,37 @@ jobs:
         run: ls -la ${{ github.workspace }}  # Показываем файлы в корне проекта
 
       - name: Restore dependencies
-        working-directory: ${{ github.workspace }}/  # Укажи реальную папку проекта
-        run: dotnet restore car.sln  # Если нет `.sln`, используй `.csproj`
+        working-directory: ${{ github.workspace }}/  # Указываем корневую папку проекта
+        run: |
+          # Найдем решение или проект
+          if [ -f "car.sln" ]; then
+            dotnet restore car.sln
+          elif [ -f "Assembly-CSharp.csproj" ]; then
+            dotnet restore Assembly-CSharp.csproj
+          else
+            echo "Ошибка: Не найден .sln или .csproj файл" && exit 1
+          fi
 
       - name: Build C# scripts
-        working-directory: ${{ github.workspace }}/
-        run: dotnet build --no-restore --configuration Release
+        working-directory: ${{ github.workspace }}/  # Указываем корневую папку проекта
+        run: |
+          # Убедимся, что используем правильный файл для сборки
+          if [ -f "car.sln" ]; then
+            dotnet build car.sln --no-restore --configuration Release
+          elif [ -f "Assembly-CSharp.csproj" ]; then
+            dotnet build Assembly-CSharp.csproj --no-restore --configuration Release
+          else
+            echo "Ошибка: Не найден .sln или .csproj файл" && exit 1
+          fi
 
       - name: Run C# tests
-        working-directory: ${{ github.workspace }}/
-        run: dotnet test --no-build --verbosity normal
+        working-directory: ${{ github.workspace }}/  # Указываем корневую папку проекта
+        run: |
+          # Убедимся, что используем правильный файл для тестов
+          if [ -f "car.sln" ]; then
+            dotnet test car.sln --no-build --verbosity normal
+          elif [ -f "Assembly-CSharp.csproj" ]; then
+            dotnet test Assembly-CSharp.csproj --no-build --verbosity normal
+          else
+            echo "Ошибка: Не найден .sln или .csproj файл" && exit 1
+          fi
