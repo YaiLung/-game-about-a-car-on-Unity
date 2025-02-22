@@ -1,0 +1,17 @@
+name: Unity Project Check
+
+on: [push]
+
+jobs:
+  check-unity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Test Unity Project Load
+        uses: game-ci/unity-builder@v4
+        with:
+          projectPath: .
+          unityVersion: 2021.3.18f1  # Укажи версию Unity своего проекта
+          targetPlatform: StandaloneLinux64  # Проверка на Linux (можно поменять)
