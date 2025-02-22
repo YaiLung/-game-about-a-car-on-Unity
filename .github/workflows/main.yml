@@ -15,7 +15,7 @@ jobs:
           dotnet-version: 7.0.x  # Используем актуальную версию .NET
 
       - name: Restore dependencies
-        run: dotnet restore pon.sln
+        run: dotnet restore .github/workflows/pon.sln
 
       - name: Build C# scripts
         run: dotnet build --no-restore --configuration Release
