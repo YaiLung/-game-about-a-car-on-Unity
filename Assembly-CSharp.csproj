@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\CarController.cs" />
+    <Compile Include="Assets\AICarController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
