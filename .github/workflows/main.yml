@@ -18,13 +18,13 @@ jobs:
         run: ls -la ${{ github.workspace }}  # Показываем файлы в корне проекта
 
       - name: Restore dependencies
-        working-directory: ${{ github.workspace }}/Race-game-Unity  # Укажи реальную папку проекта
+        working-directory: ${{ github.workspace }}/  # Укажи реальную папку проекта
         run: dotnet restore car.sln  # Если нет `.sln`, используй `.csproj`
 
       - name: Build C# scripts
-        working-directory: ${{ github.workspace }}/Race-game-Unity
+        working-directory: ${{ github.workspace }}/
         run: dotnet build --no-restore --configuration Release
 
       - name: Run C# tests
-        working-directory: ${{ github.workspace }}/Race-game-Unity
+        working-directory: ${{ github.workspace }}/
         run: dotnet test --no-build --verbosity normal
