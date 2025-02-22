@@ -1,17 +1,24 @@
-name: Unity Project Check
+name: Unity C# Tests
 
 on: [push]
 
 jobs:
-  check-unity:
+  test-csharp:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Test Unity Project Load
-        uses: game-ci/unity-builder@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
-          projectPath: .
-          unityVersion: 2021.3.18f1  # Укажи версию Unity своего проекта
-          targetPlatform: StandaloneLinux64  # Проверка на Linux (можно поменять)
+          dotnet-version: 7.0.x  # Используем актуальную версию .NET
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build C# scripts
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Run C# tests
+        run: dotnet test --no-build --verbosity normal
