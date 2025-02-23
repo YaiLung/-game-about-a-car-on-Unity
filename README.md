@@ -7,11 +7,12 @@ ___
 
 ## After that, if you can play with the bot:
 
-![2025-02-22 23-13-44 (online-video-cutter com) (1)](https://github.com/user-attachments/assets/0e2bf31b-0098-4747-a787-8cf24904479e)
+![2025-02-22 23-13-44 (online-video-cutter com) (1)](https://github.com/user-attachments/assets/a3d6e35f-599f-4ba2-996f-99347ba8a73e)
 
 ## Or connect your server and play with a friend!
 
-![2025-02-22 23-13-44 (online-video-cutter com)](https://github.com/user-attachments/assets/1aac8aa9-2631-478d-8792-20f8e6d34eb1)
+![2025-02-22 23-13-44 (online-video-cutter com)](https://github.com/user-attachments/assets/8b95156c-0873-4c3a-a334-2b8152b0ef1f)
+
 ___
 
 
